@@ -1,0 +1,28 @@
+{
+  "name": "bai1_hello_word",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "beautiful": "prettier --single-quote --write --trailing-comma all 'src/**/*.{js,json,scss}'",
+    "start": "nodemon --inspect src/index.js",
+    "sass": "sass src/resources/scss:src/public/css",
+    "sass:watch": "sass --watch src/resources/scss:src/public/css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
+    "mongoose": "^8.14.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.10",
+    "sass": "^1.88.0"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
+    "prettier": "^3.5.3"
+  }
+}
