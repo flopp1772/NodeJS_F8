@@ -6,47 +6,31 @@ h2 {
   color: green;
 }
 
-
-/* ======= Card Course Item ======= */
-
 .card-course-item {
   height: 100%;
   display: flex;
   flex-direction: column;
 }
-
-
 .card-course-item .card-body {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
-
-
 .card-course-item .card-title {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
-
-
 .card-course-item .card-text {
   flex-grow: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  /* Hiển thị tối đa 3 dòng */
   -webkit-box-orient: vertical;
 }
-
-
 .card-course-item .btn {
   margin-top: auto;
 }
-
 
 /*# sourceMappingURL=app.css.map */

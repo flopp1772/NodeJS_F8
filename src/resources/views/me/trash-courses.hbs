@@ -1,0 +1,91 @@
+<div class="mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="mb-0">Thùng rác</h3>
+        <a href="/me/stored/courses" class="btn btn-outline-secondary d-flex align-items-center">
+            <i class="fas fa-arrow-left me-2"></i>
+            Quay lại
+        </a>
+    </div>
+
+    {{#if deletedCourses.length}}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên</th>
+                <th scope="col">Mô tả</th>
+                <th scope="col">Ảnh</th>
+                <th scope="col">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each deletedCourses}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.description}}</td>
+                <td>
+                    <img src="{{this.image}}" alt="{{this.name}}" width="120" class="rounded">
+                </td>
+                <td>
+                    <div class="d-flex flex-column gap-2">
+                        <!-- Link khôi phục -->
+                        <a href="#" class="btn btn-sm btn-outline-success btn-restore" data-id="{{this._id}}">
+                            <i class="fas fa-undo-alt me-1"></i>Khôi phục
+                        </a>
+
+                        <!-- Link xóa vĩnh viễn -->
+                        <a href="#" class="btn btn-sm btn-outline-danger btn-force-delete" data-id="{{this._id}}">
+                            <i class="fas fa-trash-alt me-1"></i>Xóa vĩnh viễn
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+    <p>Không có khóa học nào trong thùng rác.</p>
+    {{/if}}
+</div>
+
+<form id="restore-form" method="POST" style="display: none;">
+    <input type="hidden" name="_method" value="PATCH">
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Xử lý nút "Khôi phục"
+        const restoreButtons = document.querySelectorAll('.btn-restore');
+        const restoreForm = document.getElementById('restore-form');
+
+        restoreButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const courseId = this.getAttribute('data-id');
+                restoreForm.action = `/courses/${courseId}/restore?_method=PATCH`;
+                restoreForm.submit();
+            });
+        });
+
+        // Xử lý nút "Xóa vĩnh viễn"
+        const forceDeleteButtons = document.querySelectorAll('.btn-force-delete');
+        const forceDeleteForm = document.getElementById('force-delete-form');
+
+        forceDeleteButtons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const courseId = this.getAttribute('data-id');
+                const confirmDelete = confirm('Bạn có chắc chắn muốn xóa vĩnh viễn khóa học này không?');
+                if (confirmDelete) {
+                    forceDeleteForm.action = `/courses/${courseId}/force?_method=DELETE`;
+                    forceDeleteForm.submit();
+                }
+            });
+        });
+    });
+</script>
+
+<form id="force-delete-form" method="POST" style="display: none;">
+    <input type="hidden" name="_method" value="DELETE">
+</form>

@@ -1,9 +1,41 @@
-@import 'variables';
+@use 'variables';
 
 h1 {
-  color: $red-color;
+  color: variables.$red-color;
 }
 
 h2 {
   color: green;
+}
+
+// ======= Card Course Item =======
+.card-course-item {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-text {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; // Hiển thị tối đa 3 dòng
+    -webkit-box-orient: vertical;
+  }
+
+  .btn {
+    margin-top: auto;
+  }
 }

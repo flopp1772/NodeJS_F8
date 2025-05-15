@@ -1,0 +1,26 @@
+<div class="mt-4">
+    <h3>Đăng khóa học</h3>
+    <form method="POST" action="/courses/store">
+        <div class="form-group mb-3">
+            <label for="name">Tên khóa học</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên khóa học" required>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="description">Mô tả</label>
+            <textarea class="form-control" id="description" name="description" rows="3"
+                placeholder="Nhập mô tả ngắn về khóa học" required></textarea>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="videoId">YouTube Video ID</label>
+            <input type="text" class="form-control" id="videoId" name="videoId" placeholder="Ví dụ: n5DrbDgFcJc"
+                required>
+            <small class="form-text text-muted">
+                Chỉ nhập đoạn ID sau `watch?v=`, ví dụ: `https://www.youtube.com/watch?v=<strong>n5DrbDgFcJc</strong>`
+            </small>
+        </div>
+
+        <button type="submit" class="btn btn-success">Thêm khóa học</button>
+    </form>
+</div>

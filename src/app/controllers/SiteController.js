@@ -3,7 +3,7 @@ const Course = require('../models/Course');
 class SiteController {
   // [GET] /
   async index(req, res, next) {
-    Course.find({}).lean()
+    Course.findWithDeleted({}).lean()
       .then(courses => res.render('home', { courses }))
       .catch(err => res.status(400).json({ error: 'ERROR!!!' }));
   }

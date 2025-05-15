@@ -1,0 +1,34 @@
+<div class="mt-4 d-flex justify-content-center">
+    <div class="card w-50 shadow">
+        <div class="card-body">
+            <h3 class="card-title text-center mb-4">Cập nhật khóa học</h3>
+            <form method="POST" action="/courses/{{course._id}}?_method=PUT">
+                <div class="form-group mb-3">
+                    <label for="name">Tên khóa học</label>
+                    <input type="text" class="form-control" value="{{course.name}}" id="name" name="name"
+                        placeholder="Nhập tên khóa học" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="description">Mô tả</label>
+                    <textarea class="form-control" id="description" name="description" rows="3"
+                        placeholder="Nhập mô tả ngắn về khóa học" required>{{course.description}}</textarea>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="videoId">YouTube Video ID</label>
+                    <input type="text" class="form-control" value="{{course.videoId}}" id="videoId" name="videoId"
+                        placeholder="Ví dụ: n5DrbDgFcJc" required>
+                    <small class="form-text text-muted">
+                        Chỉ nhập đoạn ID sau `watch?v=`, ví dụ:
+                        <code>https://www.youtube.com/watch?v=<strong>n5DrbDgFcJc</strong></code>
+                    </small>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success px-4">Lưu lại</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
